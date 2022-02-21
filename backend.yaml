@@ -20,6 +20,8 @@ spec:
         app: todoapp-backend
     spec:
       serviceAccountName: backend-sa
+      nodeSelector:
+        iam.gke.io/gke-metadata-server-enabled: "true"
       containers:
         - name: todoapp-backend
           image: asia-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-backend:1.0.9
