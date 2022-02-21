@@ -47,7 +47,7 @@ spec:
           image: gcr.io/cloudsql-docker/gce-proxy:1.11
           command:
             - /cloud_sql_proxy
-            - -instances=phu-le-it:asia-northeast1:todoapp-d33c05ca=tcp:3306
+            - -instances=phu-le-it:asia-northeast1:todoapp-bd270f2b=tcp:3306
           securityContext:
             runAsUser: 2
             allowPrivilegeEscalation: false
