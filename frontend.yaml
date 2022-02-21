@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todoapp-frontend
-          image: ap-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-frontend:1.0.4
+          image: asia-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-frontend:1.0.4
           imagePullPolicy: Always
           ports:
             - containerPort: 80
