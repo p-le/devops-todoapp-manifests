@@ -9,12 +9,11 @@ jobs:
 
     - uses: actions/checkout@v2
       name: checkout
-      with:
-        ref: auto-manifests-${{ github.run_id }}
-
+      
     - uses: repo-sync/pull-request@v2
       name: pull-request
       with:
+        source_branch: auto-manifests-${{ github.run_id }}
         destination_branch: main
         pr_title: "Update K8S Manifest Files in main branch"
         pr_body: "👑 *An automated PR*"
