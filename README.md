@@ -1,41 +1,11 @@
-# TODO
+## Using `kustomize`
 
-## Update `backend.yaml`
-1. Change email of Node Pool Account
+### 1. Update Images
+
 ```
-metadata:
-  annotations:
-    iam.gke.io/gcp-service-account:
+kustomize edit set image "todoapp-frontend=asia-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-frontend:1.0.4"
 ```
 
-2. Change target of Container Image:
 ```
-spec:
-  template:
-    spec:
-      containers:
-        - name: todoapp-backend
-          image:
+kustomize edit set image "todoapp-backend=asia-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-backend:1.0.9"
 ```
-3. Change Cloud SQL Database Connection Name:
-```
-spec:
-  template:
-    spec:
-      containers:
-        - name: cloudsql-proxy
-          command:
-            - instances=
-```
-
-
-## Update `frontend.yaml`
-
-2. Change target of Container Image:
-```
-spec:
-  template:
-    spec:
-      containers:
-        - name: todoapp-frontend
-          image:
