@@ -1,0 +1,4 @@
+resources:
+- backend.yaml
+- frontend.yaml
+- ingress.yaml
