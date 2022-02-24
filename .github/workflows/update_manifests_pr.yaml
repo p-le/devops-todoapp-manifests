@@ -1,0 +1,20 @@
+on: 
+  workflow_dispatch:
+
+jobs:
+  update-manifests-pr:
+    name: Open PR to update manifests
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+      name: checkout
+
+    - uses: repo-sync/pull-request@v2
+      name: pull-request
+      with:
+        destination_branch: main
+        pr_title: "Update K8S Manifest Files in main branch"
+        pr_body: "👑 *An automated PR*"
+        pr_draft: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
