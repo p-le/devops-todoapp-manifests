@@ -29,3 +29,15 @@ jobs:
       with:
         cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
         location: ${{ secrets.GKE_CLUSTER_LOCATION }}
+    
+    - name: Set up Kustomize
+      run: |-
+        curl -sfLo /usr/local/bin/kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+        chmod u+x /usr/local/bin/kustomize
+
+    - name: Apply Changes
+      run: |-
+        sed -i.bak 's/placeholder@gserviceaccount.com/${{ secrets.GKE_SERVICE_ACCOUNT }}/' backend/service_account.yaml
+        sed -i.bak 's/backend-sa/${{ secrets.GKE_BACKEND_SA }}/' backend/service_account.yaml
+        sed -i.bak 's/backend-sa/${{ secrets.GKE_BACKEND_SA }}/' backend/deployment.yaml
+        kustomize build . | kubectl apply --namespace=${{ secrets.GKE_TARGET_NAMESPACE }} -f -
