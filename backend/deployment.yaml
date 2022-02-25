@@ -23,9 +23,15 @@ spec:
             - name: DB_HOST
               value: 127.0.0.1:3306
             - name: DB_USER
-              value: admin
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: user
             - name: DB_PASSWORD
-              value: 5WE&ladz
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
             - name: LOG_LEVEL
               value: debug
           ports:
@@ -40,7 +46,12 @@ spec:
           image: gcr.io/cloudsql-docker/gce-proxy:1.11
           command:
             - /cloud_sql_proxy
-            - -instances=phu-le-it:asia-northeast1:todoapp-bd270f2b=tcp:3306
+          env:
+            - name: INSTANCES 
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: connection_name
           securityContext:
             runAsUser: 2
             allowPrivilegeEscalation: false
