@@ -4,7 +4,6 @@ resources:
 - backend
 - frontend
 - base
-namePrefix: todoapp-
 commonLabels:
   app: todoapp
 images:
