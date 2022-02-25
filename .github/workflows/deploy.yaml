@@ -40,4 +40,5 @@ jobs:
         sed -i.bak 's/placeholder@gserviceaccount.com/${{ secrets.GKE_SERVICE_ACCOUNT }}/' backend/service_account.yaml
         sed -i.bak 's/backend-sa/${{ secrets.GKE_BACKEND_SA }}/' backend/service_account.yaml
         sed -i.bak 's/backend-sa/${{ secrets.GKE_BACKEND_SA }}/' backend/deployment.yaml
+        sed -i.bak 's/static-public-ip/${{ secrets.PUBLIC_IP_NAME }}/' base/ingress.yaml
         ./kustomize build . | kubectl apply --namespace=${{ secrets.GKE_TARGET_NAMESPACE }} -f -
