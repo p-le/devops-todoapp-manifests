@@ -12,4 +12,4 @@ images:
   newTag: v1.0.9
 - name: todoapp-frontend
   newName: asia-northeast1-docker.pkg.dev/phu-le-it/todoapp-repository/todoapp-frontend
-  newTag: v1.0.5
+  newTag: v1.0.6
